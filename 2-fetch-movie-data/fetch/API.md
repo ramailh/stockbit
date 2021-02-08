@@ -6,9 +6,9 @@ Fetch server that handles various data fetch from OMDB API. Running on port `908
   /
 * **Method:**
   `GET`
-*  **URL Params**
-    search string <br />
-    page string
+*  **URL Params** <br />
+    search `string` <br />
+    page `string`
 * **Data Params**
     None
 * **Success Response:**
