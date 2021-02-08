@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "/grpc/pb";
+
+message Log {
+    string method = 1; 
+    string client_ip = 2;
+    float latency = 3;
+    string path = 4;
+    int64 status_code = 5;
+    int64 timestamp = 6;
+}
+
+message Response {
+    string message = 1; 
+    bool status = 2;
+}
+
+service Logging {
+    rpc InsertLog (Log) returns (Response);
+}

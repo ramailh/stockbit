@@ -1,0 +1,1 @@
+protoc --proto_path=grpc/pb/ --go_out=plugins=grpc:. grpc/pb/service.proto
