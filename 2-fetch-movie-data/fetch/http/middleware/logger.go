@@ -9,17 +9,19 @@ import (
 )
 
 func LoggerMiddleware(params gin.LogFormatterParams) string {
-	err := client.Logging(&pb.Log{
-		Method:     params.Method,
-		ClientIp:   params.ClientIP,
-		Latency:    float32(params.Latency.Seconds()),
-		Path:       params.Path,
-		StatusCode: int64(params.StatusCode),
-		Timestamp:  params.TimeStamp.Unix(),
-	})
-	if err != nil {
-		log.Println(err)
-	}
+	go func() {
+		err := client.Logging(&pb.Log{
+			Method:     params.Method,
+			ClientIp:   params.ClientIP,
+			Latency:    float32(params.Latency.Seconds()),
+			Path:       params.Path,
+			StatusCode: int64(params.StatusCode),
+			Timestamp:  params.TimeStamp.Unix(),
+		})
+		if err != nil {
+			log.Println(err)
+		}
+	}()
 
 	return ""
 }
